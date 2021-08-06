@@ -10,7 +10,7 @@ puts 'Limpiando base de datos...'
 Restaurant.destroy_all
 puts 'La base de datos ha sido limpiada'
 
-puts 'Creating records for database, hold on...'
+puts 'Creating records for Restaurants table, hold on...'
 100.times do
   restaurant = Restaurant.create(
     name: Faker::Restaurant.name,
