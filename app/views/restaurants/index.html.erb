@@ -1,0 +1,19 @@
+<h1>Our Restaurants</h1>
+<p></p>
+
+<ul class="list-inline">
+  <%  @restaurants.each do |restaurant| %>
+    <li class="">
+      <div class="d-flex justify-content-between py-1" style="width: 300px;">
+        <div class="d-inline">
+      <%= link_to restaurant.name, restaurant_path(restaurant) %> 
+      </div>
+      <div class="d-inline">
+      <%= link_to "✏️", edit_restaurant_path(restaurant), title: 'Edit this restaurant' %> 
+      <%= link_to "🗑️", restaurant_path(restaurant), title: 'Delete this restaurant',method: :delete, data: { confirm: "Esta seguro?"} %>
+      </div>
+      </div>
+      </li>
+  <% end %>
+</ul>
+<p><%= link_to 'Add a new restaurant', new_restaurant_path%></p>
