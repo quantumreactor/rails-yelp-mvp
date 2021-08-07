@@ -15,6 +15,13 @@
   </head>
 
   <body>
-    <%= yield %>
+  <div class="container">
+    <div class="navbar-light bg-secondary justify-content-normal">
+      <%= link_to 'Home', restaurants_path, class: "btn btn-secondary" %>
+      <%= link_to 'Restaurants', restaurants_path, class: "btn btn-secondary" %>
+    </div>
+    <div classs="row">
+     <%= yield %>
+    </div>
   </body>
 </html>

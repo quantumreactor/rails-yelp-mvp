@@ -2,13 +2,14 @@
 class RestaurantsController < ApplicationController
   # Las 7 rutas: show, index, new, create, edit, update y destroy
   #before_action :select_restaurant #, only: %i(show edit update destroy)
+  before_action :find_restaurant, except: [ :index ]
 
   def index
     @restaurants = Restaurant.all
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
+    
   end
 
   def new
@@ -25,7 +26,6 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    @restaurant = Restaurant.find(params[:id])
   end
 
   def update
@@ -33,14 +33,18 @@ class RestaurantsController < ApplicationController
     redirect_to restaurant_path(@restaurant)
   end
 
-
+  def destroy
+    @restaurant.destroy
+    redirect_to restaurants_path
+  end
 
   private
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :address, :phone_number, :category)
   end
-  #def select_restaurant
-  #  @restaurant = Restaurant.find(params[:id])
-  #end
+  
+  def find_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
 end

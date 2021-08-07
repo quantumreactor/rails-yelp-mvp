@@ -1,8 +1,26 @@
 <h1> <%=  @restaurant.name %> </h1>
 <p> <%=  @restaurant.address %> </p>
 
-<%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant) %><br>
-
-<%= link_to "Back to My restaurants", restaurants_path %>
-<%= link_to 'Dejar una reseña', new_restaurant_review_path(@restaurant)%>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"> 
+          <div class="d-flex justify-content-between" style="width: 400px;">
+        <div class="d-inline">
+          <%= "⭐"*review.rating.to_i%> <%= review.content %>
+        </div>
+        <div class="d-inline">
+          <%= link_to "🗑️",
+            restaurant_review_path(@restaurant, review),
+            method: :delete, title: 'Remove this review',
+            data: { confirm: "Are you sure?" } %>
+      </div>
+      </div>
+  </li>
+  <% end %>
+</ul>
+  
+    
+<%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant), class: "btn btn-primary" %>
+<%= link_to "Back to all restaurants", restaurants_path, class: "btn btn-primary" %> 
+<%= link_to 'Dejar una reseña', new_restaurant_review_path(@restaurant), class: "btn btn-primary"%>
 

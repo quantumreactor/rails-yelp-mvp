@@ -3,14 +3,14 @@
 
 <ul class="list-inline">
   <%  @restaurants.each do |restaurant| %>
-    <li class="">
+    <li class="list-group-item">
       <div class="d-flex justify-content-between py-1" style="width: 300px;">
         <div class="d-inline">
       <%= link_to restaurant.name, restaurant_path(restaurant) %> 
       </div>
       <div class="d-inline">
-      <%= link_to "✏️", edit_restaurant_path(restaurant), title: 'Edit this restaurant' %> 
-      <%= link_to "🗑️", restaurant_path(restaurant), title: 'Delete this restaurant',method: :delete, data: { confirm: "Esta seguro?"} %>
+      <%= link_to "📝", edit_restaurant_path(restaurant), title: 'Edit this restaurant' %> 
+      <%= link_to "🗑️", restaurant_path(restaurant), title: 'Delete this restaurant', method: :delete, data: { confirm: "Esta seguro?"} %>
       </div>
       </div>
       </li>
