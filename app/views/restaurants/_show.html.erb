@@ -1,0 +1,7 @@
+<%= simple_form_for [ @restaurant, @review ] do |r| %>
+  <%= r.label :rating %>
+  <%= r.text_field :rating %><br>
+  <%= r.label :content %>
+  <%= r.text_field :content %><br>
+  <%= r.submit "Submit review", class: "btn btn-primary" %><br>
+<% end %>

@@ -3,4 +3,5 @@ class Restaurant < ApplicationRecord
   validates :name, :address, presence: true
   validates :category, inclusion: { in: CATEGORIES }
   has_many :reviews, dependent: :destroy
+  accepts_nested_attributes_for :reviews
 end

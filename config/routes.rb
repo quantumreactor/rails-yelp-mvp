@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     #member do
     #  get :review
     #end
-    resources :reviews, only: [ :new, :create, :destroy, :update ]
+    resources :reviews, only: [ :create, :destroy, :update ]
   end
   resources :reviews
 end

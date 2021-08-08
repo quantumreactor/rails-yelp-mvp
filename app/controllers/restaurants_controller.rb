@@ -1,15 +1,14 @@
-# documenatation
 class RestaurantsController < ApplicationController
   # Las 7 rutas: show, index, new, create, edit, update y destroy
-  #before_action :select_restaurant #, only: %i(show edit update destroy)
-  before_action :find_restaurant, except: [ :index ]
+  # before_action :select_restaurant #, only: %i(show edit update destroy)
+  before_action :find_restaurant, except: [ :index, :new, :create ]
 
   def index
     @restaurants = Restaurant.all
   end
 
   def show
-    
+    @review = Review.new
   end
 
   def new
@@ -41,7 +40,7 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :phone_number, :category)
+    params.require(:restaurant).permit(:name, :address, :phone_number, :category, { reviews: [ :rating, :content ] })
   end
   
   def find_restaurant

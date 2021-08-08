@@ -1,5 +1,5 @@
 <h1> <%=  @restaurant.name %> </h1>
-<p> <%=  @restaurant.address %> </p>
+<p> <%=  @restaurant.category %> </p>
 
 <ul class="list-group">
   <% @restaurant.reviews.each do |review| %>
@@ -19,8 +19,12 @@
   <% end %>
 </ul>
   
-    
+    <div>
 <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant), class: "btn btn-primary" %>
 <%= link_to "Back to all restaurants", restaurants_path, class: "btn btn-primary" %> 
-<%= link_to 'Dejar una reseña', new_restaurant_review_path(@restaurant), class: "btn btn-primary"%>
+</div>
 
+<div>
+<h3> Add your review </h3>
+<%= render 'restaurants/show' %>
+</div>
