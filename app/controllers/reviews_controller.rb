@@ -16,6 +16,8 @@ class ReviewsController < ApplicationController
       redirect_to restaurant_path(@restaurant)
     else
       render 'restaurants/show'
+      #redirect_to restaurant_path(@restaurant)
+      
     end
   end
 
